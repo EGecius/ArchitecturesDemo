@@ -3,11 +3,17 @@ package com.egecius.architecturesdemo.cleanarch.b_adapters
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit.NetworkService
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
+import io.reactivex.Single
 
 class CarsRepoImpl(
     private val networkService: NetworkService,
     private val carDao: CarDao
 ) : CarsRepo {
+
+    override fun getCarsSingle(): Single<List<Car>> {
+        // TODO: 29/03/2020 add cashing
+        return networkService.getCarsFullSingle()
+    }
 
     override suspend fun getCars(): List<Car> {
         val carsFull = networkService.getCarsFull()

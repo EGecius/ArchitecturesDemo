@@ -1,6 +1,7 @@
 package com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit
 
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
+import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -40,6 +41,9 @@ interface NetworkService {
 
     @GET(ENDPOINT_CARS_FULL)
     suspend fun getCarsFull(): List<Car>
+
+    @GET(ENDPOINT_CARS_FULL)
+    fun getCarsFullSingle(): Single<List<Car>>
 
     companion object {
         const val ENDPOINT_CARS_FULL = "electric_full"
