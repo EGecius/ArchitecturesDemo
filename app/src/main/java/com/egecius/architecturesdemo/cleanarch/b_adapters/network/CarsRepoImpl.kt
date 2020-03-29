@@ -3,6 +3,7 @@ package com.egecius.architecturesdemo.cleanarch.b_adapters.network
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
 import io.reactivex.Single
+import kotlinx.coroutines.rx2.rxSingle
 
 class CarsRepoImpl(
     private val networkService: NetworkService,
@@ -11,8 +12,9 @@ class CarsRepoImpl(
 ) : CarsRepo {
 
     override fun getCarsSingle(): Single<List<Car>> {
-        // TODO: 29/03/2020 add cashing
-        return networkService.getCarsFullSingle().map { jsonCarMapper.toCars(it) }
+        return rxSingle {
+            getCars()
+        }
     }
 
     override suspend fun getCars(): List<Car> {
