@@ -1,4 +1,4 @@
-package com.egecius.architecturesdemo.cleanarch
+package com.egecius.architecturesdemo.cleanarch.a_frameworks.android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,6 +1,6 @@
 package com.egecius.architecturesdemo.cleanarch.di
 
-import com.egecius.architecturesdemo.cleanarch.CleanArchMainActivity
+import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CleanArchMainActivity
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit.RetrofitAdapter
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.room.CarsDatabase
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CarsRepoImpl
