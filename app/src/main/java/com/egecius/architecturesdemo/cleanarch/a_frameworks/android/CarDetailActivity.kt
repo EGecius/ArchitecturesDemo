@@ -29,7 +29,9 @@ class CarDetailActivity : AppCompatActivity() {
 
     companion object {
 
-        const val KEY_CAR = "key_car"
+        private const val KEY_CAR = "key_car"
+        private const val KEY_CAR_IMAGE = "car_image"
+        private const val KEY_CAR_TITLE = "car_title"
 
         fun start(
             originActivity: Activity,
@@ -37,8 +39,8 @@ class CarDetailActivity : AppCompatActivity() {
         ) {
             val intent = Intent(originActivity, CarDetailActivity::class.java)
             intent.putExtra(KEY_CAR, carClick.car)
-            val pairImage = Pair(carClick.imageView as View, "car_image")
-            val pairTitle = Pair(carClick.titleView as View, "car_title")
+            val pairImage = Pair(carClick.imageView as View, KEY_CAR_IMAGE)
+            val pairTitle = Pair(carClick.titleView as View, KEY_CAR_TITLE)
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 originActivity,
                 pairImage,
