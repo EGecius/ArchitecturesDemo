@@ -18,10 +18,10 @@ class CarDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_car_detail)
 
-        setUi()
+        showCar()
     }
 
-    private fun setUi() {
+    private fun showCar() {
         val car = intent.extras!!.get(KEY_CAR) as UiCar
         title = car.title
         Picasso.get().load(car.imgUrl).into(image)
@@ -41,11 +41,7 @@ class CarDetailActivity : AppCompatActivity() {
             intent.putExtra(KEY_CAR, carClick.car)
             val pairImage = Pair(carClick.imageView as View, KEY_CAR_IMAGE)
             val pairTitle = Pair(carClick.titleView as View, KEY_CAR_TITLE)
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                originActivity,
-                pairImage,
-                pairTitle
-            )
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(originActivity, pairImage, pairTitle)
             originActivity.startActivity(intent, options.toBundle())
         }
     }
