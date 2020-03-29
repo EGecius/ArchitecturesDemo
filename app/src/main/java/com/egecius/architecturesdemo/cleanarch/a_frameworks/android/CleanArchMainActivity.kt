@@ -7,7 +7,7 @@ import com.egecius.architecturesdemo.R
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.CleanArcActivityPresenter
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.di.CleanArchMainActivityModule
-import com.egecius.architecturesdemo.cleanarch.di.DaggerCleanArchMainActivityComponent
+import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
 import com.egecius.architecturesdemo.cleanarch.shared.setGone
 import com.egecius.architecturesdemo.cleanarch.shared.setVisible
 import com.google.android.material.snackbar.Snackbar
@@ -48,9 +48,8 @@ class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.Vie
     }
 
     private fun injectDependencies() {
-        DaggerCleanArchMainActivityComponent.builder()
-            .cleanArchMainActivityModule(CleanArchMainActivityModule(this))
-            .build().injectInto(this)
+        (application as MyApplication).appComponent.plus(CleanArchMainActivityModule(this))
+            .injectInto(this)
     }
 
     override fun showCars(uiCarsList: List<UiCar>) {
