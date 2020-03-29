@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.egecius.architecturesdemo.R
-import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.CleanArcActivityPresenter
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.di.CleanArchMainActivityModule
 import com.egecius.architecturesdemo.cleanarch.di.DaggerCleanArchMainActivityComponent

@@ -5,7 +5,7 @@ import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit.RetrofitAdapter
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.room.CarsDatabase
 import com.egecius.architecturesdemo.cleanarch.b_adapters.network.CarsRepoImpl
-import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.CleanArcActivityPresenter
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
@@ -36,7 +36,12 @@ class CleanArchMainActivityModule(private val cleanArchMainActivity: CleanArchMa
         getCarsInteractor: GetCarsInteractor,
         uiCarsMapper: UiCarsMapper
     ): CleanArcActivityPresenter {
-        return CleanArcActivityPresenter(navigator, getCarsInteractor, uiCarsMapper, interactorSchedulers)
+        return CleanArcActivityPresenter(
+            navigator,
+            getCarsInteractor,
+            uiCarsMapper,
+            interactorSchedulers
+        )
     }
 
     @Provides

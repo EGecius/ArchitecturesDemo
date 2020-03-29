@@ -2,7 +2,8 @@ package com.egecius.architecturesdemo.cleanarch.b_adapters
 
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
-import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter.*
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.CleanArcActivityPresenter
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.CleanArcActivityPresenter.*
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
@@ -42,7 +43,12 @@ class CleanArcActivityPresenterTest {
 
     @Before
     fun setUp() {
-        sut = CleanArcActivityPresenter(navigator, getCarsInteractor, uiMapper, TestInteractorSchedulers())
+        sut = CleanArcActivityPresenter(
+            navigator,
+            getCarsInteractor,
+            uiMapper,
+            TestInteractorSchedulers()
+        )
         given(uiMapper.toUiCars(carsList)).willReturn(uiCarsList)
     }
 
