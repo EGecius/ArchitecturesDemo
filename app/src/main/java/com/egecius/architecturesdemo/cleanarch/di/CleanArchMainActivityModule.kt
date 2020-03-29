@@ -8,8 +8,8 @@ import com.egecius.architecturesdemo.cleanarch.b_adapters.CarsRepoImpl
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
-import com.egecius.architecturesdemo.cleanarch.shared.AndroidSchedulers
-import com.egecius.architecturesdemo.cleanarch.shared.Schedulers
+import com.egecius.architecturesdemo.cleanarch.shared.AndroidInteractorSchedulers
+import com.egecius.architecturesdemo.cleanarch.shared.InteractorSchedulers
 import dagger.Module
 import dagger.Provides
 
@@ -24,17 +24,17 @@ class CleanArchMainActivityModule(private val cleanArchMainActivity: CleanArchMa
     }
 
     @Provides
-    fun provideSchedulers(): Schedulers {
-        return AndroidSchedulers()
+    fun provideSchedulers(): InteractorSchedulers {
+        return AndroidInteractorSchedulers()
     }
 
     @Provides
     fun provideCleanArcActivityPresenter(
         navigator: Navigator,
-        schedulers: Schedulers,
+        interactorSchedulers: InteractorSchedulers,
         getCarsInteractor: GetCarsInteractor
     ): CleanArcActivityPresenter {
-        return CleanArcActivityPresenter(navigator, getCarsInteractor, schedulers)
+        return CleanArcActivityPresenter(navigator, getCarsInteractor, interactorSchedulers)
     }
 
     @Provides

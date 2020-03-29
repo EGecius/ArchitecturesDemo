@@ -3,7 +3,7 @@ package com.egecius.architecturesdemo.cleanarch.shared
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 
-class AndroidSchedulers : Schedulers {
+class AndroidInteractorSchedulers : InteractorSchedulers {
 
     override fun getExecutionScheduler(): Scheduler {
         return io.reactivex.schedulers.Schedulers.io()
