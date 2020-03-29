@@ -5,6 +5,7 @@ import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit.RetrofitAdapter
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.room.CarsDatabase
 import com.egecius.architecturesdemo.cleanarch.b_adapters.network.CarsRepoImpl
+import com.egecius.architecturesdemo.cleanarch.b_adapters.network.NetworkCarMapper
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.CleanArcActivityPresenter
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
@@ -18,10 +19,10 @@ import dagger.Provides
 class CleanArchMainActivityModule(private val cleanArchMainActivity: CleanArchMainActivity) {
 
     @Provides
-    fun provideCarsRepository(): CarsRepo {
+    fun provideCarsRepository(networkCarMapper: NetworkCarMapper): CarsRepo {
         val carsRetrofitService = RetrofitAdapter().setupRetrofit()
         val carDao = CarsDatabase.getInstance(cleanArchMainActivity).carDao()
-        return CarsRepoImpl(carsRetrofitService, carDao)
+        return CarsRepoImpl(carsRetrofitService, carDao, networkCarMapper)
     }
 
     @Provides
