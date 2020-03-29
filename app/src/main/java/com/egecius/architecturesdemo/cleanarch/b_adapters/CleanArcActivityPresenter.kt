@@ -4,19 +4,34 @@ import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
 import com.egecius.architecturesdemo.cleanarch.shared.InteractorSchedulers
+import com.egecius.architecturesdemo.cleanarch.shared.on
 import io.reactivex.disposables.CompositeDisposable
 
 class CleanArcActivityPresenter(
     private val navigator: Navigator,
     private val getCarsInteractor: GetCarsInteractor,
-    private val uiCarsMapper: UiCarsMapper,
-    private val interactorSchedulers: InteractorSchedulers
+    private val uiMapper: UiCarsMapper,
+    private val schedulers: InteractorSchedulers
 ) {
 
+    private lateinit var view: View
     private val compositeDisposable = CompositeDisposable()
 
     fun onStart(view: View) {
-        TODO("not implemented")
+        this.view = view
+        showCarsList()
+    }
+
+    private fun showCarsList() {
+        val disposable = getCarsInteractor.getCarsSingle()
+            .map { uiMapper.toUiCars(it) }
+            .on(schedulers)
+            .subscribe(
+                { view.showCars(it) },
+                { }
+            )
+
+        compositeDisposable.add(disposable)
     }
 
     fun onStop() {
