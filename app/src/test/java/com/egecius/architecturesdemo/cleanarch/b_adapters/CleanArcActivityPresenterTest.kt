@@ -18,6 +18,11 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class CleanArcActivityPresenterTest {
 
+    /** sut - System Under Test */
+    private lateinit var sut: CleanArcActivityPresenter
+
+    @Mock
+    private lateinit var uiMapper: UiCarsMapper
     @Mock
     private lateinit var getCarsInteractor: GetCarsInteractor
     @Mock
@@ -26,14 +31,13 @@ class CleanArcActivityPresenterTest {
     private lateinit var view: View
 
     private val carsList = listOf(Car("Tesla 3" ,"img"))
-    private val uiCarsList = listOf(Car("Tesla 3" ,"img"))
+    private val uiCarsList = listOf(UiCar("Tesla 3" ,"img"))
 
-    /** sut - System Under Test */
-    private lateinit var sut: CleanArcActivityPresenter
 
     @Before
     fun setUp() {
-        sut = CleanArcActivityPresenter(navigator, getCarsInteractor, TestInteractorSchedulers())
+        sut = CleanArcActivityPresenter(navigator, getCarsInteractor, uiMapper, TestInteractorSchedulers())
+        given(uiMapper.toUiCars(carsList)).willReturn(uiCarsList)
     }
 
     @Test

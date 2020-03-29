@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.egecius.architecturesdemo.R
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter
-import com.egecius.architecturesdemo.cleanarch.d_domain.Car
+import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCar
 import com.egecius.architecturesdemo.cleanarch.di.CleanArchMainActivityModule
 import com.egecius.architecturesdemo.cleanarch.di.DaggerCleanArchMainActivityComponent
 import javax.inject.Inject
@@ -42,7 +42,7 @@ class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.Vie
             .build().injectInto(this)
     }
 
-    override fun showCars(uiCarsList: List<Car>) {
+    override fun showCars(uiCarsList: List<UiCar>) {
         carRecyclerViewAdapter.setData(uiCarsList)
     }
 }

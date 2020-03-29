@@ -6,6 +6,7 @@ import com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit.RetrofitAda
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.room.CarsDatabase
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CarsRepoImpl
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter
+import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
 import com.egecius.architecturesdemo.cleanarch.shared.AndroidInteractorSchedulers
@@ -32,9 +33,10 @@ class CleanArchMainActivityModule(private val cleanArchMainActivity: CleanArchMa
     fun provideCleanArcActivityPresenter(
         navigator: Navigator,
         interactorSchedulers: InteractorSchedulers,
-        getCarsInteractor: GetCarsInteractor
+        getCarsInteractor: GetCarsInteractor,
+        uiCarsMapper: UiCarsMapper
     ): CleanArcActivityPresenter {
-        return CleanArcActivityPresenter(navigator, getCarsInteractor, interactorSchedulers)
+        return CleanArcActivityPresenter(navigator, getCarsInteractor, uiCarsMapper, interactorSchedulers)
     }
 
     @Provides
