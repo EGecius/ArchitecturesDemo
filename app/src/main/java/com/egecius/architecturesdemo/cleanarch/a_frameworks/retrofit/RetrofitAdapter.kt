@@ -1,5 +1,6 @@
 package com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit
 
+import com.egecius.architecturesdemo.cleanarch.b_adapters.network.JsonCar
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -37,13 +38,13 @@ interface NetworkService {
 
     // only works with Heroku base url
     @GET("electric")
-    fun getCarsByPages(@Query("page") page: Int): Call<List<Car>>
+    fun getCarsByPages(@Query("page") page: Int): Call<List<JsonCar>>
 
     @GET(ENDPOINT_CARS_FULL)
-    suspend fun getCarsFull(): List<Car>
+    suspend fun getCarsFull(): List<JsonCar>
 
     @GET(ENDPOINT_CARS_FULL)
-    fun getCarsFullSingle(): Single<List<Car>>
+    fun getCarsFullSingle(): Single<List<JsonCar>>
 
     companion object {
         const val ENDPOINT_CARS_FULL = "electric_full"
