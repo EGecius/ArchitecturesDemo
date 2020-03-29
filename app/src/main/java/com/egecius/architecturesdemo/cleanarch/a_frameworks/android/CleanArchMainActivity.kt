@@ -2,6 +2,7 @@ package com.egecius.architecturesdemo.cleanarch.a_frameworks.android
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.egecius.architecturesdemo.R
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter
 import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCar
@@ -27,7 +28,13 @@ class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.Vie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clean_arch)
+        setupRecycler()
         injectDependencies()
+    }
+
+    private fun setupRecycler() {
+        recycler_view.layoutManager = LinearLayoutManager(this)
+        recycler_view.adapter = carRecyclerViewAdapter
     }
 
     override fun onStart() {
