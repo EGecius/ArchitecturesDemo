@@ -8,13 +8,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.egecius.architecturesdemo.R
 import com.egecius.architecturesdemo.androidarch.di.AndroidArchActivityModule
-import com.egecius.architecturesdemo.androidarch.di.DaggerAndroidArchActivityComponent
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarDetailActivity
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarRecyclerViewAdapter
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.OnCarClickListener
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
-import com.egecius.architecturesdemo.cleanarch.di.DaggerCleanArchMainActivityComponent
+import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_android_arch.*
 
@@ -37,9 +36,8 @@ class AndroidArchActivity : AppCompatActivity() {
     }
 
     private fun injectDependencies() {
-        DaggerAndroidArchActivityComponent.builder()
-            .androidArchActivityModule(AndroidArchActivityModule(this))
-            .build().injectInto(this)
+        (application as MyApplication).appComponent.plus(AndroidArchActivityModule(this))
+            .injectInto(this)
     }
 
     private fun setupUi() {

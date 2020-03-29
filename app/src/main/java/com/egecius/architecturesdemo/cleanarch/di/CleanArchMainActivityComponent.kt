@@ -2,8 +2,9 @@ package com.egecius.architecturesdemo.cleanarch.di
 
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CleanArchMainActivity
 import dagger.Component
+import dagger.Subcomponent
 
-@Component(modules = [CleanArchMainActivityModule::class])
+@Subcomponent(modules = [CleanArchMainActivityModule::class])
 interface CleanArchMainActivityComponent {
 
     fun injectInto(activity: CleanArchMainActivity)
