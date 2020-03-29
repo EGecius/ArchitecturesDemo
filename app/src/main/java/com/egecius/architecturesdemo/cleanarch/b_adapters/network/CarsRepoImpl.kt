@@ -7,17 +7,17 @@ import io.reactivex.Single
 class CarsRepoImpl(
     private val networkService: NetworkService,
     private val carDao: CarDao,
-    private val networkCarMapper: NetworkCarMapper
+    private val jsonkCarMapper: JsonkCarMapper
 ) : CarsRepo {
 
     override fun getCarsSingle(): Single<List<Car>> {
         // TODO: 29/03/2020 add cashing
-        return networkService.getCarsFullSingle().map { networkCarMapper.toCars(it) }
+        return networkService.getCarsFullSingle().map { jsonkCarMapper.toCars(it) }
     }
 
     override suspend fun getCars(): List<Car> {
         val jsonCars = networkService.getCarsFull()
-        val cars = networkCarMapper.toCars(jsonCars)
+        val cars = jsonkCarMapper.toCars(jsonCars)
         storeCarsInDatabase(cars)
         return returnInternetOrDbData(cars)
     }
