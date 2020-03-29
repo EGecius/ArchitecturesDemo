@@ -4,11 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.egecius.architecturesdemo.R
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter
+import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import com.egecius.architecturesdemo.cleanarch.di.CleanArchMainActivityModule
 import com.egecius.architecturesdemo.cleanarch.di.DaggerCleanArchMainActivityComponent
 import javax.inject.Inject
 
-class CleanArchMainActivity : AppCompatActivity() {
+class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
 
     @Inject
     lateinit var presenter: CleanArcActivityPresenter
@@ -27,7 +28,7 @@ class CleanArchMainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        presenter.onStart()
+        presenter.onStart(this)
     }
 
     override fun onStop() {
@@ -39,5 +40,9 @@ class CleanArchMainActivity : AppCompatActivity() {
         DaggerCleanArchMainActivityComponent.builder()
             .cleanArchMainActivityModule(CleanArchMainActivityModule(this))
             .build().injectInto(this)
+    }
+
+    override fun showCars(uiCarsList: List<Car>) {
+        carRecyclerViewAdapter.setData(uiCarsList)
     }
 }

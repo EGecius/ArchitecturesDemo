@@ -3,6 +3,7 @@ package com.egecius.architecturesdemo.cleanarch.b_adapters
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
+import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import com.egecius.architecturesdemo.cleanarch.shared.InteractorSchedulers
 import io.reactivex.disposables.CompositeDisposable
 
@@ -14,7 +15,7 @@ class CleanArcActivityPresenter(
 
     private val compositeDisposable = CompositeDisposable()
 
-    fun onStart() {
+    fun onStart(view: View) {
         TODO("not implemented")
     }
 
@@ -27,4 +28,8 @@ class CleanArcActivityPresenter(
         TODO("not implemented")
     }
 
+    interface View {
+        fun showCars(uiCarsList: List<Car>)
+
+    }
 }
