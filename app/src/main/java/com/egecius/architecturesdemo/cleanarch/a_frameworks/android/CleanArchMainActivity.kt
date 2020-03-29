@@ -20,6 +20,10 @@ class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.Vie
         }
     })
 
+    override fun showErrorMsg() {
+        TODO("not implemented")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_clean_arch)

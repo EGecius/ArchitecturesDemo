@@ -28,7 +28,7 @@ class CleanArcActivityPresenter(
             .on(schedulers)
             .subscribe(
                 { view.showCars(it) },
-                { }
+                { view.showErrorMsg() }
             )
 
         compositeDisposable.add(disposable)
@@ -45,6 +45,7 @@ class CleanArcActivityPresenter(
 
     interface View {
         fun showCars(uiCarsList: List<UiCar>)
+        fun showErrorMsg()
 
     }
 }

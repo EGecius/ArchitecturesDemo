@@ -14,6 +14,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.Exception
 
 @RunWith(MockitoJUnitRunner::class)
 class CleanArcActivityPresenterTest {
@@ -43,14 +44,26 @@ class CleanArcActivityPresenterTest {
     @Test
     fun `shows list of cars`() {
         givenListOfCarsWillBeReturned()
-    }
-
-
-    private fun givenListOfCarsWillBeReturned() {
-        given(getCarsInteractor.getCarsSingle()).willReturn(Single.just(carsList))
 
         sut.onStart(view)
 
         verify(view).showCars(uiCarsList)
+    }
+
+    private fun givenListOfCarsWillBeReturned() {
+        given(getCarsInteractor.getCarsSingle()).willReturn(Single.just(carsList))
+    }
+
+    @Test
+    fun `shows error message when fetching cars fails`() {
+        givenListOfCarsWillFailToReturn()
+
+        sut.onStart(view)
+
+        verify(view).showErrorMsg()
+    }
+
+    private fun givenListOfCarsWillFailToReturn() {
+        given(getCarsInteractor.getCarsSingle()).willReturn(Single.error(Exception()))
     }
 }
