@@ -1,6 +1,5 @@
-package com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit
+package com.egecius.architecturesdemo.cleanarch.b_adapters.network
 
-import com.egecius.architecturesdemo.cleanarch.b_adapters.network.JsonCar
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET

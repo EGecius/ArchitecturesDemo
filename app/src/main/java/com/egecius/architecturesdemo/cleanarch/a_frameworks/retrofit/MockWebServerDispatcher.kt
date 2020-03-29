@@ -1,5 +1,6 @@
 package com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit
 
+import com.egecius.architecturesdemo.cleanarch.b_adapters.network.NetworkService
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
