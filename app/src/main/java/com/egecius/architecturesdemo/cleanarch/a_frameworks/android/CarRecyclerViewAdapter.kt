@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.egecius.architecturesdemo.R
-import com.egecius.architecturesdemo.cleanarch.d_domain.Car
+import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCar
 import com.squareup.picasso.Picasso
 
 class CarRecyclerViewAdapter(
     private val onCarClickListener: OnCarClickListener
 ) : Adapter<CarRecyclerViewAdapter.MyViewHolder>() {
 
-    private var carList: List<Car> = emptyList()
+    private var carList: List<UiCar> = emptyList()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): MyViewHolder {
         val view =
@@ -31,8 +31,8 @@ class CarRecyclerViewAdapter(
             )
         }
 
-        holder.title.text = carList[i].name
-        val imgUrl = carList[i].img
+        holder.title.text = carList[i].title
+        val imgUrl = carList[i].imgUrl
         Picasso.get().load(imgUrl).into(holder.image)
     }
 
@@ -40,7 +40,7 @@ class CarRecyclerViewAdapter(
         return carList.size
     }
 
-    fun setData(cars: List<Car>) {
+    fun setData(cars: List<UiCar>) {
         carList = cars
         notifyDataSetChanged()
     }
@@ -56,4 +56,4 @@ interface OnCarClickListener {
     fun onClick(carClick: CarClick)
 }
 
-class CarClick(val car: Car, val imageView: ImageView, val titleView: TextView)
+class CarClick(val car: UiCar, val imageView: ImageView, val titleView: TextView)
