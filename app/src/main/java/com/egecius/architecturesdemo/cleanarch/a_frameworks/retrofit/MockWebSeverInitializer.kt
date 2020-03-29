@@ -23,7 +23,9 @@ class MockWebSeverInitializer {
         Completable.fromCallable { mockWebServer.start(PORT) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({}, {
+            .subscribe({
+                Log.v(TAG, "setupMockWebSever() success")
+            }, {
                 Log.e(TAG, "setupMockWebSever() exception: $it")
             })
     }
