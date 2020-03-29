@@ -15,14 +15,14 @@ class RetrofitAdapter {
     private val mockWebServerBaseUrl = MockWebSeverInitializer.BASE_URL
     private val baseUrlHeroku = "https://mighty-spire-24044.herokuapp.com/"
 
-    fun setupRetrofit(): CarRetrofitService {
+    fun setupRetrofit(): NetworkService {
         return Retrofit.Builder()
             .baseUrl(mockWebServerBaseUrl)
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(createLoggingOkHttpClient())
             .build()
-            .create(CarRetrofitService::class.java)
+            .create(NetworkService::class.java)
     }
 
     private fun createLoggingOkHttpClient(): OkHttpClient {
@@ -32,7 +32,7 @@ class RetrofitAdapter {
     }
 }
 
-interface CarRetrofitService {
+interface NetworkService {
 
     // only works with Heroku base url
     @GET("electric")

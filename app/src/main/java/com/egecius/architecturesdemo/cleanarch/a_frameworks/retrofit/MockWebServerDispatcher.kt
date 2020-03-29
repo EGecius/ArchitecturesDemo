@@ -11,7 +11,7 @@ class MockWebServerDispatcher : Dispatcher() {
 
         Thread.sleep(NETWORK_DELAY_MILLIS)
 
-        if (request?.path.equals("/" + CarRetrofitService.ENDPOINT_CARS_FULL)) {
+        if (request?.path.equals("/" + NetworkService.ENDPOINT_CARS_FULL)) {
             return MockResponse().setBody(getElectricCars())
         }
         return MockResponse().setResponseCode(404)
