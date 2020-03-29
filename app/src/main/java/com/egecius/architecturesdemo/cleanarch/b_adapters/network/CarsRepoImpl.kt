@@ -1,6 +1,7 @@
-package com.egecius.architecturesdemo.cleanarch.b_adapters
+package com.egecius.architecturesdemo.cleanarch.b_adapters.network
 
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit.NetworkService
+import com.egecius.architecturesdemo.cleanarch.b_adapters.network.CarDao
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
 import io.reactivex.Single

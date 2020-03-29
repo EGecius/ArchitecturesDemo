@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.egecius.architecturesdemo.cleanarch.b_adapters.CarDao
+import com.egecius.architecturesdemo.cleanarch.b_adapters.network.CarDao
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 
 @Database(entities = [Car::class], version = 1, exportSchema = false)

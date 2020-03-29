@@ -4,7 +4,7 @@ import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CleanArchMai
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit.RetrofitAdapter
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.room.CarsDatabase
-import com.egecius.architecturesdemo.cleanarch.b_adapters.CarsRepoImpl
+import com.egecius.architecturesdemo.cleanarch.b_adapters.network.CarsRepoImpl
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor

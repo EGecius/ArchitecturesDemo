@@ -1,4 +1,4 @@
-package com.egecius.architecturesdemo.cleanarch.b_adapters
+package com.egecius.architecturesdemo.cleanarch.b_adapters.network
 
 import androidx.room.Dao
 import androidx.room.Insert
