@@ -1,0 +1,3 @@
+package com.egecius.architecturesdemo.cleanarch.b_adapters.network
+
+class NetworkCarMapper
