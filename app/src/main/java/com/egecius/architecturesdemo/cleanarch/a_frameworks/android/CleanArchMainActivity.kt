@@ -7,6 +7,8 @@ import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresen
 import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCar
 import com.egecius.architecturesdemo.cleanarch.di.CleanArchMainActivityModule
 import com.egecius.architecturesdemo.cleanarch.di.DaggerCleanArchMainActivityComponent
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_clean_arch.*
 import javax.inject.Inject
 
 class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
@@ -19,10 +21,6 @@ class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.Vie
             presenter.onClick(carClick)
         }
     })
-
-    override fun showErrorMsg() {
-        TODO("not implemented")
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,5 +46,13 @@ class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.Vie
 
     override fun showCars(uiCarsList: List<UiCar>) {
         carRecyclerViewAdapter.setData(uiCarsList)
+    }
+
+    override fun showErrorMsg() {
+        Snackbar.make(parent_layout, getString(R.string.loading_error), Snackbar.LENGTH_INDEFINITE)
+            .setAction(getString(R.string.retry)) {
+                presenter.retryShowingCars()
+            }
+            .show()
     }
 }

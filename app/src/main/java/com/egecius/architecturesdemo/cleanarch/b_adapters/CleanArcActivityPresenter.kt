@@ -42,6 +42,10 @@ class CleanArcActivityPresenter(
         navigator.openDetailScreen(carClick)
     }
 
+    fun retryShowingCars() {
+        TODO("not implemented")
+    }
+
     interface View {
         fun showCars(uiCarsList: List<UiCar>)
         fun showErrorMsg()

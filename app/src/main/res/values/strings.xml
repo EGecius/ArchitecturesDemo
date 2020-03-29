@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ArchitecturesDemo</string>
+    <string name="loading_error">Loading error</string>
+    <string name="retry">Retry</string>
 </resources>
