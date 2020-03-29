@@ -7,6 +7,8 @@ import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresen
 import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCar
 import com.egecius.architecturesdemo.cleanarch.di.CleanArchMainActivityModule
 import com.egecius.architecturesdemo.cleanarch.di.DaggerCleanArchMainActivityComponent
+import com.egecius.architecturesdemo.cleanarch.shared.setGone
+import com.egecius.architecturesdemo.cleanarch.shared.setVisible
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_clean_arch.*
 import javax.inject.Inject
@@ -45,7 +47,13 @@ class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.Vie
     }
 
     override fun showCars(uiCarsList: List<UiCar>) {
+        showCarListOnly()
         carRecyclerViewAdapter.setData(uiCarsList)
+    }
+
+    private fun showCarListOnly() {
+        recycler_view.setVisible()
+        progress_bar.setGone()
     }
 
     override fun showErrorMsg() {
