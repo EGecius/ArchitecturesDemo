@@ -28,6 +28,8 @@
 
         <activity android:name=".cleanarch.a_frameworks.android.CarDetailActivity" />
 
+        <activity android:name=".androidarch.AndroidArchActivity" />
+
     </application>
 
 </manifest>
