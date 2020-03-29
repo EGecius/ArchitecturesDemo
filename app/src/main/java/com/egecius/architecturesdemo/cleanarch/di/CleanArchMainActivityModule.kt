@@ -19,18 +19,6 @@ import dagger.Provides
 class CleanArchMainActivityModule(private val cleanArchMainActivity: CleanArchMainActivity) {
 
     @Provides
-    fun provideCarsRepository(jsonCarMapper: JsonCarMapper): CarsRepo {
-        val carsRetrofitService = RetrofitAdapter().setupRetrofit()
-        val carDao = CarsDatabase.getInstance(cleanArchMainActivity).carDao()
-        return CarsRepoImpl(carsRetrofitService, carDao, jsonCarMapper)
-    }
-
-    @Provides
-    fun provideSchedulers(): InteractorSchedulers {
-        return AndroidInteractorSchedulers()
-    }
-
-    @Provides
     fun provideCleanArcActivityPresenter(
         navigator: Navigator,
         interactorSchedulers: InteractorSchedulers,
