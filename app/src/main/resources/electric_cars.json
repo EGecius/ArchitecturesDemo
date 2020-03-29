@@ -1,0 +1,94 @@
+[ 
+	{
+		"name": "Nissan Leaf",
+		"img": "https://st.motortrend.com/uploads/sites/10/2015/11/2012-nissan-leaf-sl-hatchback-angular-rear.png"
+	},
+	{
+		"name": "Renault Zoe",
+		"img": "https://car-images.bauersecure.com/pagefiles/74548/1040x585/renault-zoe-esport-01.jpg"
+	},
+	{
+		"name": "Renault Kangoo",
+		"img": "https://parkers-images.bauersecure.com/pagefiles/195207/cut-out/600x400/renault_kangoo08.jpg"
+	},
+	{
+		"name": "Jaguar I-Pace",
+		"img": "https://wi-images.condecdn.net/image/QGXQO598qyn/crop/1620/f/jaguar-i-pace-uk-review-wired-12.jpg"
+	},
+	{
+		"name": "BMWi3",
+		"img": "https://www.bmwusa.com/content/dam/bmwusa/BMWi/i3/i3-irange.png"
+	},
+	{
+		"name": "Tesla Model 3",
+		"img": "https://moneyinc.com/wp-content/uploads/2018/08/2019-TESLA-MODEL-3-HATCHBACK-4-810x463-750x429.jpg"
+	},
+	{
+		"name": "Hyundai Kona Electric",
+		"img": "https://d2t6ms4cjod3h9.cloudfront.net/wp-content/uploads/2018/10/hyundai-kona-electric-16.jpg"
+	},
+	{
+		"name": "Tesla Model S",
+		"img": "https://d2t6ms4cjod3h9.cloudfront.net/wp-content/uploads/2018/12/568f4f87-tesla-model-s-next-gen-render-11.jpg"
+	},
+	{
+		"name": "Hyundai Ioniq Electric",
+		"img": "https://car-images.bauersecure.com/pagefiles/31455/1040x585/001.jpg"
+	},
+	{
+		"name": "Tesla Model X",
+		"img": "http://imagesvc.timeincapp.com/v3/foundry/image/?q=70&w=1440&url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2017%2F05%2Ftesla-model-x-hero-image.jpg%3Fquality%3D85"
+	},
+	{
+		"name": "VW e-Golf",
+		"img": "https://electrek.co/wp-content/uploads/sites/3/2017/09/2017_e-golf_70401-e1505411891496.jpg?quality=82&strip=all&w=1600"
+	},
+	{
+		"name": "Kia Soul EV",
+		"img": "https://hips.hearstapps.com/amv-prod-cad-assets.s3.amazonaws.com/images/16q3/669461/2016-kia-soul-ev-test-review-car-and-driver-photo-670462-s-original.jpg"
+	},
+	{
+		"name": "Smart Fortwo Electric Drive",
+		"img": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/smart-42-ed-web-a-0094.jpg?itok=8HzdhYIc"
+	},
+	{
+		"name": "VW e-Up",
+		"img": "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/volkswagen-e-up-rear-quarter_0.jpg?itok=2mST-XWp"
+	},
+	{
+		"name": "Audi E-tron Sportback",
+		"img": "https://moneyinc.com/wp-content/uploads/2018/08/maxresdefault-5-750x422.jpg"
+	},
+	{
+		"name": "Jaguar XJ",
+		"img": "https://moneyinc.com/wp-content/uploads/2018/08/2019-jaguar-xj50-blue-rear-left-quarter-750x459.jpg"
+	},
+	{
+		"name": "Mini E",
+		"img": "https://moneyinc.com/wp-content/uploads/2018/08/maxresdefault-6-750x422.jpg"
+	},
+	{
+		"name": "Volvo XC40 Electric",
+		"img": "https://moneyinc.com/wp-content/uploads/2018/08/216716_new_volvo_xc40_exterior-hero-750x422.jpg"
+	},
+	{
+		"name": "Nissan IDS (concept)",
+		"img": "https://moneyinc.com/wp-content/uploads/2018/08/nissaian-750x563.jpg"
+	},
+	{
+		"name": "Audi Q6 e-tron quattro SUV",
+		"img": "https://moneyinc.com/wp-content/uploads/2018/08/audi-e-tron-quattro-concept-827_827x510_81453367937-750x463.jpg"
+	},
+	{
+		"name": "Porsche Mission E",
+		"img": "https://moneyinc.com/wp-content/uploads/2018/08/porscheeeeee-750x499.jpg"
+	},
+	{
+		"name": "Mercedes-Benz Generation EQ",
+		"img": "http://imagesvc.timeincapp.com/v3/foundry/image/?q=70&w=1440&url=http%3A%2F%2Fd254andzyoxz3f.cloudfront.net%2Fmercedes_benz_generation_eq_hero_.jpg"
+	},
+	{
+		"name": "Aston Martin RapidE",
+		"img": "https://moneyinc.com/wp-content/uploads/2018/08/2019-aston-martin-rapide-amr-engine-top-speed-950x500-750x395.jpg"
+	}
+]
