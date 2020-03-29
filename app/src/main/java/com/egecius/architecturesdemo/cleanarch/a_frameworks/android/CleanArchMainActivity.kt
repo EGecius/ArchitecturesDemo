@@ -13,8 +13,7 @@ class CleanArchMainActivity : AppCompatActivity() {
     @Inject
     lateinit var presenter: CleanArcActivityPresenter
 
-    private val carRecyclerViewAdapter = CarRecyclerViewAdapter(object :
-        OnCarClickListener {
+    private val carRecyclerViewAdapter = CarRecyclerViewAdapter(object : OnCarClickListener {
         override fun onClick(carClick: CarClick) {
             presenter.onClick(carClick)
         }

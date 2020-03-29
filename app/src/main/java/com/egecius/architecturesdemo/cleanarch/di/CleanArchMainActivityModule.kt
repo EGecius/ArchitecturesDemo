@@ -1,6 +1,7 @@
 package com.egecius.architecturesdemo.cleanarch.di
 
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CleanArchMainActivity
+import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.retrofit.RetrofitAdapter
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.room.CarsDatabase
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CarsRepoImpl
@@ -27,7 +28,12 @@ class CleanArchMainActivityModule(private val cleanArchMainActivity: CleanArchMa
     }
 
     @Provides
-    fun provideCleanArcActivityPresenter(): CleanArcActivityPresenter {
-        return CleanArcActivityPresenter()
+    fun provideCleanArcActivityPresenter(navigator: Navigator): CleanArcActivityPresenter {
+        return CleanArcActivityPresenter(navigator)
+    }
+
+    @Provides
+    fun provideNavigator(): Navigator {
+        return Navigator(cleanArchMainActivity)
     }
 }
