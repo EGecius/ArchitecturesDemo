@@ -5,6 +5,7 @@ import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
 import io.reactivex.Single
 import kotlinx.coroutines.rx2.rxSingle
 
+/** Returns data from network. If data not found there, shows cashed data */
 class CarsRepoImpl(
     private val networkService: NetworkService,
     private val carDao: CarDao,
