@@ -1,9 +1,10 @@
-package com.egecius.architecturesdemo
+package com.egecius.architecturesdemo.cleanarch
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.egecius.architecturesdemo.R
 
-class MainActivity : AppCompatActivity() {
+class CleanArchMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
