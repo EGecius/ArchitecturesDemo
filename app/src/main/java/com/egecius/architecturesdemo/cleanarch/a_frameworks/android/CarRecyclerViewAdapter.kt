@@ -46,6 +46,7 @@ class CarRecyclerViewAdapter(
         notifyDataSetChanged()
     }
 
+    // TODO: 29/03/2020 do not use  findViewById here
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cardView: View = itemView.findViewById(R.id.card_view)
         var title: TextView = itemView.findViewById(R.id.title)
