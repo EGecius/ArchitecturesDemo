@@ -1,8 +1,10 @@
 package com.egecius.architecturesdemo.cleanarch.b_adapters
 
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
+import com.egecius.architecturesdemo.cleanarch.shared.AllOpen
 import javax.inject.Inject
 
+@AllOpen
 class UiCarsMapper @Inject constructor() {
 
     fun toUiCars(carsList: List<Car>): List<UiCar> {
