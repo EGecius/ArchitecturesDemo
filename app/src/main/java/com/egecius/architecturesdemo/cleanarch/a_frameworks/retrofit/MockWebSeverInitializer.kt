@@ -18,7 +18,7 @@ class MockWebSeverInitializer {
     @SuppressLint("CheckResult") // no need to keep Disposable here
     private fun setupMockWebSever() {
         mockWebServer = MockWebServer()
-        mockWebServer.setDispatcher(MockWebServerDispatcher())
+        mockWebServer.dispatcher = MockWebServerDispatcher()
 
         Completable.fromCallable { mockWebServer.start(PORT) }
             .subscribeOn(Schedulers.io())
