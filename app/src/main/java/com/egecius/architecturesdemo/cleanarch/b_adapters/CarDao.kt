@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 
+/** Database Access Object for cars */
 @Dao
 interface CarDao {
 
