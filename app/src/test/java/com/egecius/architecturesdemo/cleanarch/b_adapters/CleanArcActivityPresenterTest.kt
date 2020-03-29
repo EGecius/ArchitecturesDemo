@@ -1,5 +1,6 @@
 package com.egecius.architecturesdemo.cleanarch.b_adapters
 
+import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter.*
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
@@ -30,6 +31,8 @@ class CleanArcActivityPresenterTest {
     private lateinit var navigator: Navigator
     @Mock
     private lateinit var view: View
+    @Mock
+    private lateinit var carClick: CarClick
 
     private val carsList = listOf(Car("Tesla 3" ,"img"))
     private val uiCarsList = listOf(UiCar("Tesla 3" ,"img"))
@@ -65,5 +68,13 @@ class CleanArcActivityPresenterTest {
 
     private fun givenListOfCarsWillFailToReturn() {
         given(getCarsInteractor.getCarsSingle()).willReturn(Single.error(Exception()))
+    }
+
+    @Test
+    fun `opens card detail screen on user click`() {
+
+        sut.onClick(carClick)
+
+        verify(navigator).openDetailScreen(carClick)
     }
 }

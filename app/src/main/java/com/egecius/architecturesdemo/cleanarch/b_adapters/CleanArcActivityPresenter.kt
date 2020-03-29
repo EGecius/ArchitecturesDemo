@@ -38,9 +38,8 @@ class CleanArcActivityPresenter(
         compositeDisposable.clear()
     }
 
-
     fun onClick(carClick: CarClick) {
-        TODO("not implemented")
+        navigator.openDetailScreen(carClick)
     }
 
     interface View {

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.egecius.architecturesdemo.R
 import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCar
+import com.egecius.architecturesdemo.cleanarch.shared.AllOpen
 import com.squareup.picasso.Picasso
 
 class CarRecyclerViewAdapter(
@@ -56,4 +57,5 @@ interface OnCarClickListener {
     fun onClick(carClick: CarClick)
 }
 
+@AllOpen
 class CarClick(val car: UiCar, val imageView: ImageView, val titleView: TextView)
