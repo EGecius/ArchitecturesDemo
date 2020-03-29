@@ -45,7 +45,7 @@ class CleanArcActivityPresenterTest {
     }
 
     @Test
-    fun `shows list of cars`() {
+    fun `shows list of cars on start`() {
         givenListOfCarsWillBeReturned()
 
         sut.onStart(view)
@@ -72,9 +72,19 @@ class CleanArcActivityPresenterTest {
 
     @Test
     fun `opens card detail screen on user click`() {
-
         sut.onClick(carClick)
 
         verify(navigator).openDetailScreen(carClick)
+    }
+
+    @Test
+    fun `shows list of cars when 'retry' clicked`() {
+        givenListOfCarsWillFailToReturn()
+        sut.onStart(view)
+
+        givenListOfCarsWillBeReturned()
+        sut.retryShowingCars()
+
+        verify(view).showCars(uiCarsList)
     }
 }

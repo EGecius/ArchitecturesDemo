@@ -43,7 +43,7 @@ class CleanArcActivityPresenter(
     }
 
     fun retryShowingCars() {
-        TODO("not implemented")
+        showCarsList()
     }
 
     interface View {
