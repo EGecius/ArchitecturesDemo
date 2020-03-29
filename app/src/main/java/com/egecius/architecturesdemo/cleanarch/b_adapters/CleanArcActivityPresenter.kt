@@ -2,6 +2,8 @@ package com.egecius.architecturesdemo.cleanarch.b_adapters
 
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
 import com.egecius.architecturesdemo.cleanarch.shared.InteractorSchedulers
 import com.egecius.architecturesdemo.cleanarch.shared.on

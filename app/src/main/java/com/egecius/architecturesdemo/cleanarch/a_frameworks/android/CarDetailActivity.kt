@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import com.egecius.architecturesdemo.R
-import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCar
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_car_detail.*
 

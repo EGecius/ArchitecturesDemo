@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.egecius.architecturesdemo.R
-import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCar
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.shared.AllOpen
 import com.squareup.picasso.Picasso
 

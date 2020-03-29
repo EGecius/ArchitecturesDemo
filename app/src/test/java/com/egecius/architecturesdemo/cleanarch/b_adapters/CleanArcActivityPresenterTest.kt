@@ -3,6 +3,8 @@ package com.egecius.architecturesdemo.cleanarch.b_adapters
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.b_adapters.CleanArcActivityPresenter.*
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.c_usecases.GetCarsInteractor
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import com.egecius.architecturesdemo.utils.TestInteractorSchedulers
@@ -35,7 +37,7 @@ class CleanArcActivityPresenterTest {
     private lateinit var carClick: CarClick
 
     private val carsList = listOf(Car("Tesla 3" ,"img"))
-    private val uiCarsList = listOf(UiCar("Tesla 3" ,"img"))
+    private val uiCarsList = listOf(UiCar("Tesla 3", "img"))
 
 
     @Before

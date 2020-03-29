@@ -1,4 +1,4 @@
-package com.egecius.architecturesdemo.cleanarch.b_adapters
+package com.egecius.architecturesdemo.cleanarch.b_adapters.ui
 
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import com.egecius.architecturesdemo.cleanarch.shared.AllOpen

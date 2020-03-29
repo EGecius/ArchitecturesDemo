@@ -1,5 +1,7 @@
 package com.egecius.architecturesdemo.cleanarch.b_adapters
 
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
+import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
