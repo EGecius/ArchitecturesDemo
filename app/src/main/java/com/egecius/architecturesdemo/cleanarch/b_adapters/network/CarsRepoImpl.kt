@@ -21,21 +21,21 @@ class CarsRepoImpl(
     override suspend fun getCars(): List<Car> {
         val jsonCars = networkService.getCarsFull()
         val cars = jsonCarMapper.toCars(jsonCars)
-        storeCarsInDatabase(cars)
-        return returnInternetOrDbData(cars)
+        storeCarsInDb(cars)
+        return returnLatestCars(cars)
     }
 
-    private suspend fun returnInternetOrDbData(dataInternet: List<Car>): List<Car> {
+    private suspend fun storeCarsInDb(cars: List<Car>) {
+        for (car in cars) {
+            carDao.insertCar(car)
+        }
+    }
+
+    private suspend fun returnLatestCars(dataInternet: List<Car>): List<Car> {
         return if (dataInternet.isEmpty()) {
             carDao.loadAllCars()
         } else {
             dataInternet
-        }
-    }
-
-    private suspend fun storeCarsInDatabase(cars: List<Car>) {
-        for (car in cars) {
-            carDao.insertCar(car)
         }
     }
 }
