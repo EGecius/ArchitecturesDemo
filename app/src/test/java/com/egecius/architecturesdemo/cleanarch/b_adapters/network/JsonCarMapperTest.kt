@@ -8,13 +8,13 @@ import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class JsonkCarMapperTest {
+class JsonCarMapperTest {
 
-    private lateinit var sut: JsonkCarMapper
+    private lateinit var sut: JsonCarMapper
 
     @Before
     fun setUp() {
-        sut = JsonkCarMapper()
+        sut = JsonCarMapper()
     }
 
     @Test
