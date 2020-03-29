@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import com.egecius.architecturesdemo.R
-import com.egecius.architecturesdemo.cleanarch.d_domain.Car
+import com.egecius.architecturesdemo.cleanarch.b_adapters.UiCar
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_car_detail.*
 
@@ -22,16 +22,16 @@ class CarDetailActivity : AppCompatActivity() {
     }
 
     private fun setUi() {
-        val car  = intent.extras!!.get(KEY_CAR) as Car
-        title = car.name
-        Picasso.get().load(car.img).into(image)
+        val car = intent.extras!!.get(KEY_CAR) as UiCar
+        title = car.title
+        Picasso.get().load(car.imgUrl).into(image)
     }
 
     companion object {
 
         const val KEY_CAR = "key_car"
 
-    	fun start(
+        fun start(
             originActivity: Activity,
             carClick: CarClick
         ) {
@@ -39,7 +39,11 @@ class CarDetailActivity : AppCompatActivity() {
             intent.putExtra(KEY_CAR, carClick.car)
             val pairImage = Pair(carClick.imageView as View, "car_image")
             val pairTitle = Pair(carClick.titleView as View, "car_title")
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(originActivity, pairImage, pairTitle)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                originActivity,
+                pairImage,
+                pairTitle
+            )
             originActivity.startActivity(intent, options.toBundle())
         }
     }
