@@ -28,6 +28,9 @@ android {
         }
     }
 
+    viewBinding {
+        enabled true
+    }
 
     allOpen {
         annotation("com.egecius.architecturesdemo.cleanarch.shared.AllOpen")
