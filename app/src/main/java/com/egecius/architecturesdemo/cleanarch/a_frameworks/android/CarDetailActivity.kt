@@ -9,6 +9,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import com.egecius.architecturesdemo.R
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
+import com.egecius.architecturesdemo.databinding.ActivityCarDetailBinding
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_car_detail.*
 
@@ -16,7 +17,8 @@ class CarDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_car_detail)
+        val binding = ActivityCarDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         showCar()
     }
@@ -24,7 +26,7 @@ class CarDetailActivity : AppCompatActivity() {
     private fun showCar() {
         val car = intent.extras!!.get(KEY_CAR) as UiCar
         title = car.title
-        Picasso.get().load(car.imgUrl).into(image)
+        Picasso.get().load(car.imgUrl).into(image_view)
     }
 
     companion object {
