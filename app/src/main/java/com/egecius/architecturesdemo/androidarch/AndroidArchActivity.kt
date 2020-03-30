@@ -1,8 +1,8 @@
 package com.egecius.architecturesdemo.androidarch
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,11 +16,14 @@ import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
 import com.egecius.architecturesdemo.databinding.ActivityCleanArchBinding
 import com.google.android.material.snackbar.Snackbar
+import javax.inject.Inject
 
 class AndroidArchActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var viewModel: AndroidArchViewModel
+
     private lateinit var binding: ActivityCleanArchBinding
-    private val viewModel: AndroidArchViewModel by viewModels()
 
     private val carRecyclerViewAdapter = CarRecyclerViewAdapter(object : OnCarClickListener {
         override fun onClick(carClick: CarClick) {
