@@ -20,21 +20,23 @@ class CarsRepoImplTest {
 
     @Mock
     private lateinit var jsonCarMapper: JsonCarMapper
+
     @Mock
     private lateinit var carDao: CarDao
+
     @Mock
     private lateinit var networkService: NetworkService
 
-    private val jsonCarsList = listOf(JsonCar("Tesla 3", "img"))
-    private val carsList = listOf(Car("Tesla 3", "img"))
+    private val jsonCarsListFromNetwork = listOf(JsonCar("Tesla 3", "img"))
+    private val carsListFromNetwork = listOf(Car("Tesla 3", "img"))
 
-    private val cachedCarsList = listOf(Car("Wv e-Golf", "img 2"))
+    private val carsListFromCache = listOf(Car("Wv e-Golf", "img 2"))
 
 
     @Before
     fun setUp() {
         sut = CarsRepoImpl(networkService, carDao, jsonCarMapper)
-        given(jsonCarMapper.toCars(jsonCarsList)).willReturn(carsList)
+        given(jsonCarMapper.toCars(jsonCarsListFromNetwork)).willReturn(carsListFromNetwork)
     }
 
     @Test
@@ -43,11 +45,11 @@ class CarsRepoImplTest {
 
         val result = sut.getCars()
 
-        assertThat(result).isEqualTo(carsList)
+        assertThat(result).isEqualTo(carsListFromNetwork)
     }
 
     private suspend fun givenNetworkWillReturnSuccessfully() {
-        given(networkService.getCarsFull()).willReturn(jsonCarsList)
+        given(networkService.getCarsFull()).willReturn(jsonCarsListFromNetwork)
     }
 
     @Test
@@ -57,11 +59,11 @@ class CarsRepoImplTest {
 
         val result = sut.getCars()
 
-        assertThat(result).isEqualTo(cachedCarsList)
+        assertThat(result).isEqualTo(carsListFromCache)
     }
 
     private suspend fun givenCacheDataWillReturnSuccessfully() {
-        given(carDao.loadAllCars()).willReturn(cachedCarsList)
+        given(carDao.loadAllCars()).willReturn(carsListFromCache)
     }
 
     private suspend fun givenNetworkWillReturnEmpty() {
