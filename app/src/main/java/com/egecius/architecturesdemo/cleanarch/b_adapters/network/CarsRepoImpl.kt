@@ -12,12 +12,14 @@ class CarsRepoImpl(
     private val jsonCarMapper: JsonCarMapper
 ) : CarsRepo {
 
+    /** List of cars for clients that use RxJava */
     override fun getCarsSingle(): Single<List<Car>> {
         return rxSingle {
             getCars()
         }
     }
 
+    /** List of cars for clients that use Coroutines */
     override suspend fun getCars(): List<Car> {
         val jsonCars = networkService.getCarsFull()
         val cars = jsonCarMapper.toCars(jsonCars)
