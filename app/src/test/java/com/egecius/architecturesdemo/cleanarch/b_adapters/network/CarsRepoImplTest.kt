@@ -2,6 +2,7 @@ package com.egecius.architecturesdemo.cleanarch.b_adapters.network
 
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import com.nhaarman.mockitokotlin2.given
+import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.assertj.core.api.Assertions.assertThat
@@ -28,7 +29,8 @@ class CarsRepoImplTest {
     private lateinit var networkService: NetworkService
 
     private val jsonCarsListFromNetwork = listOf(JsonCar("Tesla 3", "img"))
-    private val carsListFromNetwork = listOf(Car("Tesla 3", "img"))
+    private val car0 = Car("Tesla 3", "img")
+    private val carsListFromNetwork = listOf(car0)
 
     private val carsListFromCache = listOf(Car("Wv e-Golf", "img 2"))
 
@@ -68,5 +70,14 @@ class CarsRepoImplTest {
 
     private suspend fun givenNetworkWillReturnEmpty() {
         given(networkService.getCarsFull()).willReturn(emptyList())
+    }
+
+    @Test
+    fun `updates cache when network succeeds`() = runBlockingTest {
+        givenNetworkWillReturnSuccessfully()
+
+        sut.getCars()
+
+        verify(carDao).insertCar(car0)
     }
 }
