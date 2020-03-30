@@ -28,6 +28,9 @@ class CarsRepoImplTest {
     private val jsonCarsList = listOf(JsonCar("Tesla 3", "img"))
     private val carsList = listOf(Car("Tesla 3", "img"))
 
+    private val cachedCarsList = listOf(Car("Wv e-Golf", "img 2"))
+
+
     @Before
     fun setUp() {
         sut = CarsRepoImpl(networkService, carDao, jsonCarMapper)
@@ -36,15 +39,32 @@ class CarsRepoImplTest {
 
     @Test
     fun `returns list of cars when network returns`() = runBlockingTest {
-        givenNetworkWillReturn()
+        givenNetworkWillReturnSuccessfully()
 
         val result = sut.getCars()
 
         assertThat(result).isEqualTo(carsList)
     }
 
-    private suspend fun givenNetworkWillReturn() {
+    private suspend fun givenNetworkWillReturnSuccessfully() {
         given(networkService.getCarsFull()).willReturn(jsonCarsList)
     }
 
+    @Test
+    fun `returns cashed data when network returns empty result`() = runBlockingTest {
+        givenNetworkWillReturnEmpty()
+        givenCacheDataWillReturnSuccessfully()
+
+        val result = sut.getCars()
+
+        assertThat(result).isEqualTo(cachedCarsList)
+    }
+
+    private suspend fun givenCacheDataWillReturnSuccessfully() {
+        given(carDao.loadAllCars()).willReturn(cachedCarsList)
+    }
+
+    private suspend fun givenNetworkWillReturnEmpty() {
+        given(networkService.getCarsFull()).willReturn(emptyList())
+    }
 }
