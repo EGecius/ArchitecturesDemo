@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_clean_arch.*
 import javax.inject.Inject
 
-class CleanArchMainActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
+class CleanArchActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
 
     @Inject
     lateinit var presenter: CleanArcActivityPresenter

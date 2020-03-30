@@ -5,7 +5,7 @@
     android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cleanarch.a_frameworks.android.CleanArchMainActivity">
+    tools:context=".cleanarch.a_frameworks.android.CleanArchActivity">
 
     <ProgressBar
         android:id="@+id/progress_bar"

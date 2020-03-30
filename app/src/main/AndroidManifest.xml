@@ -18,7 +18,7 @@
         tools:ignore="AllowBackup,UnusedAttribute">
         <!-- Allows clear text because we are using MockWebServer for demo purposes -->
 
-        <activity android:name=".cleanarch.a_frameworks.android.CleanArchMainActivity">
+        <activity android:name=".cleanarch.a_frameworks.android.CleanArchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
