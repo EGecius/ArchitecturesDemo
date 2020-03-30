@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.egecius.architecturesdemo.R
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.CleanArcActivityPresenter
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
-import com.egecius.architecturesdemo.cleanarch.di.CleanArchMainActivityModule
+import com.egecius.architecturesdemo.cleanarch.di.CleanArcActivityModule
 import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
 import com.egecius.architecturesdemo.cleanarch.shared.setGone
 import com.egecius.architecturesdemo.cleanarch.shared.setVisible
@@ -48,7 +48,7 @@ class CleanArchActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
     }
 
     private fun injectDependencies() {
-        (application as MyApplication).appComponent.plus(CleanArchMainActivityModule(this))
+        (application as MyApplication).appComponent.plus(CleanArcActivityModule(this))
             .injectInto(this)
     }
 

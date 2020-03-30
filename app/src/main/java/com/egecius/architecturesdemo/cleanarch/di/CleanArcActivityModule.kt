@@ -10,7 +10,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-class CleanArchMainActivityModule(private val cleanArchActivity: CleanArchActivity) {
+class CleanArcActivityModule(private val cleanArchActivity: CleanArchActivity) {
 
     @Provides
     fun provideCleanArcActivityPresenter(
