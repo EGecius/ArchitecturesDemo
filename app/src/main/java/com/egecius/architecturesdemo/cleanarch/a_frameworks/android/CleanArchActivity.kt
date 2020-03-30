@@ -11,12 +11,12 @@ import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
 import com.egecius.architecturesdemo.cleanarch.shared.setGone
 import com.egecius.architecturesdemo.cleanarch.shared.setVisible
 import com.egecius.architecturesdemo.databinding.ActivityAndroidArchBinding
-import com.egecius.architecturesdemo.databinding.ActivityCleanArchBinding
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_clean_arch.*
 import javax.inject.Inject
 
 class CleanArchActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
+
+    private lateinit var binding: ActivityAndroidArchBinding
 
     @Inject
     lateinit var presenter: CleanArcActivityPresenter
@@ -29,15 +29,15 @@ class CleanArchActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityAndroidArchBinding.inflate(layoutInflater)
+        binding = ActivityAndroidArchBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupRecycler()
         injectDependencies()
     }
 
     private fun setupRecycler() {
-        recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.adapter = carRecyclerViewAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = carRecyclerViewAdapter
     }
 
     override fun onStart() {
@@ -61,12 +61,12 @@ class CleanArchActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
     }
 
     private fun showCarListOnly() {
-        recycler_view.setVisible()
-        progress_bar.setGone()
+        binding.recyclerView.setVisible()
+        binding.progressBar.setGone()
     }
 
     override fun showErrorMsg() {
-        Snackbar.make(parent_layout, getString(R.string.loading_error), Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(binding.root, getString(R.string.loading_error), Snackbar.LENGTH_INDEFINITE)
             .setAction(getString(R.string.retry)) {
                 presenter.retryShowingCars()
             }
