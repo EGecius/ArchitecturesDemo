@@ -16,10 +16,10 @@ import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
 import com.egecius.architecturesdemo.databinding.ActivityCleanArchBinding
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_android_arch.*
 
 class AndroidArchActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityCleanArchBinding
     private val viewModel: AndroidArchViewModel by viewModels()
 
     private val carRecyclerViewAdapter = CarRecyclerViewAdapter(object : OnCarClickListener {
@@ -30,7 +30,7 @@ class AndroidArchActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityCleanArchBinding.inflate(layoutInflater)
+        binding = ActivityCleanArchBinding.inflate(layoutInflater)
         setContentView(binding.root)
         injectDependencies()
         setupUi()
@@ -73,17 +73,17 @@ class AndroidArchActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerViewOnly() {
-        progress_bar.visibility = View.GONE
-        recycler_view.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.GONE
+        binding.recyclerView.visibility = View.VISIBLE
     }
 
     private fun setupRecycler() {
-        recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.adapter = carRecyclerViewAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = carRecyclerViewAdapter
     }
 
     private fun showLoadingError() {
-        Snackbar.make(parent_layout, getString(R.string.loading_error), Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(binding.root, getString(R.string.loading_error), Snackbar.LENGTH_INDEFINITE)
             .setAction(getString(R.string.retry)) {
                 viewModel.retryFetching()
             }
@@ -92,7 +92,7 @@ class AndroidArchActivity : AppCompatActivity() {
     }
 
     private fun showLoadingInProgress() {
-        progress_bar.visibility = View.VISIBLE
-        recycler_view.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+        binding.recyclerView.visibility = View.GONE
     }
 }

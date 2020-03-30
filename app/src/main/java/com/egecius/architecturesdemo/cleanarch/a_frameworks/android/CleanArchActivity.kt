@@ -14,6 +14,7 @@ import com.egecius.architecturesdemo.databinding.ActivityAndroidArchBinding
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
+
 class CleanArchActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
 
     private lateinit var binding: ActivityAndroidArchBinding
