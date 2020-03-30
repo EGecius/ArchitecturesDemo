@@ -4,7 +4,7 @@ import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CleanArchAct
 import dagger.Subcomponent
 
 @Subcomponent(modules = [CleanArcActivityModule::class])
-interface CleanArchMainActivityComponent {
+interface CleanArchActivityComponent {
 
     fun injectInto(activity: CleanArchActivity)
 }
