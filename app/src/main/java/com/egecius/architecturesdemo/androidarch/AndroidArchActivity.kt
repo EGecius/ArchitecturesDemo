@@ -14,6 +14,7 @@ import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarRecyclerV
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.OnCarClickListener
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
+import com.egecius.architecturesdemo.databinding.ActivityCleanArchBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_android_arch.*
 
@@ -27,10 +28,10 @@ class AndroidArchActivity : AppCompatActivity() {
         }
     })
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_android_arch)
+        val binding = ActivityCleanArchBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         injectDependencies()
         setupUi()
     }

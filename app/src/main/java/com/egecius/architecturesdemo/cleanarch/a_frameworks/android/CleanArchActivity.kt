@@ -10,6 +10,8 @@ import com.egecius.architecturesdemo.cleanarch.di.CleanArcActivityModule
 import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
 import com.egecius.architecturesdemo.cleanarch.shared.setGone
 import com.egecius.architecturesdemo.cleanarch.shared.setVisible
+import com.egecius.architecturesdemo.databinding.ActivityAndroidArchBinding
+import com.egecius.architecturesdemo.databinding.ActivityCleanArchBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_clean_arch.*
 import javax.inject.Inject
@@ -27,7 +29,8 @@ class CleanArchActivity : AppCompatActivity(), CleanArcActivityPresenter.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_clean_arch)
+        val binding = ActivityAndroidArchBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setupRecycler()
         injectDependencies()
     }
