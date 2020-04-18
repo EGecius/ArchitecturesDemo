@@ -19,15 +19,18 @@
         <!-- Allows clear text because we are using MockWebServer for demo purposes -->
 
         <activity android:name=".cleanarch.a_frameworks.android.CleanArchActivity">
+        </activity>
+
+        <activity android:name=".cleanarch.a_frameworks.android.CarDetailActivity" />
+
+        <activity android:name=".androidarch.AndroidArchActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
 
-        <activity android:name=".cleanarch.a_frameworks.android.CarDetailActivity" />
-        <activity android:name=".androidarch.AndroidArchActivity" />
+        </activity>
 
     </application>
 
