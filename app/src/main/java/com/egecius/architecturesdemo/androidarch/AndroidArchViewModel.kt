@@ -1,4 +1,4 @@
-package com.egecius.architecturesdemo.androidarch.di
+package com.egecius.architecturesdemo.androidarch
 
 import androidx.lifecycle.ViewModel
 

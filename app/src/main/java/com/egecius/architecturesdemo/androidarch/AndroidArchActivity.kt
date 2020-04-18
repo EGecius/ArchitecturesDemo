@@ -1,4 +1,4 @@
-package com.egecius.architecturesdemo
+package com.egecius.architecturesdemo.androidarch
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
