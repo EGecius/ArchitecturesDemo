@@ -8,6 +8,7 @@ import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
+import com.egecius.architecturesdemo.shared.emptyHandler
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
@@ -27,11 +28,10 @@ class AndroidArchViewModel constructor(
     }
 
     private fun fetchCarsList() {
-        viewModelScope.launch(dispatcher) {
+        viewModelScope.launch(dispatcher + emptyHandler) {
             isFetching.value = true
             carsList.value = uiCarsMapper.toUiCars(carsRepository.getCars())
         }.invokeOnCompletion {
-            // TODO: 18/04/2020 handle errors correctly - currently the app just crashes
             it?.let { isError.value = true }
             isFetching.value = false
         }
