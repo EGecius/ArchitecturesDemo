@@ -70,6 +70,8 @@ class AndroidArchViewModelTest {
     @Test
     fun `shows error message`() {
         givenCarsEmissionFails()
+
+        // TODO: 18/04/2020 finish
     }
 
     private fun givenCarsEmissionFails() {
