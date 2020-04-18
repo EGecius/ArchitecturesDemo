@@ -44,14 +44,13 @@ class AndroidArchActivity : AppCompatActivity() {
     }
 
     private fun updateViewOnViewModelChanges() {
-        viewModel.carsList.observe(this,
-            Observer { uiCarsList -> adapter.setData(uiCarsList) })
+        viewModel.carsList.observe(this, Observer { uiCarsList -> adapter.setData(uiCarsList) })
         viewModel.isError.observe(this, Observer { isError ->
             if (isError) {
                 showErrorSnackbar()
             }
         })
-        viewModel.isFetchingData.observe(this, Observer { isFetching ->
+        viewModel.isFetching.observe(this, Observer { isFetching ->
             if (isFetching) {
                 binding.progressBar.setVisible()
             } else {

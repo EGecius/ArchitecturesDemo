@@ -19,7 +19,7 @@ class AndroidArchViewModel constructor(
 ) : ViewModel() {
 
     val isError = MutableLiveData(false)
-    val isFetchingData = MutableLiveData(false)
+    val isFetching = MutableLiveData(false)
     var carsList = MutableLiveData<List<UiCar>>()
 
     init {
@@ -28,13 +28,12 @@ class AndroidArchViewModel constructor(
 
     private fun fetchCarsList() {
         viewModelScope.launch(dispatcher) {
-            isFetchingData.value = true
-            val cars = carsRepository.getCars()
-            carsList.value = uiCarsMapper.toUiCars(cars)
+            isFetching.value = true
+            carsList.value = uiCarsMapper.toUiCars(carsRepository.getCars())
         }.invokeOnCompletion {
             // TODO: 18/04/2020 handle errors correctly - currently the app just crashes
             it?.let { isError.value = true }
-            isFetchingData.value = false
+            isFetching.value = false
         }
     }
 
