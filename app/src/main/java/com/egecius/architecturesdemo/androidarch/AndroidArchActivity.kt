@@ -1,15 +1,24 @@
 package com.egecius.architecturesdemo.androidarch
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.egecius.architecturesdemo.androidarch.di.AndroidArchActivityModule
-import com.egecius.architecturesdemo.cleanarch.di.CleanArcActivityModule
+import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
+import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarRecyclerViewAdapter
+import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.OnCarClickListener
 import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
 import com.egecius.architecturesdemo.databinding.ActivityAndroidArchBinding
 import javax.inject.Inject
 
 class AndroidArchActivity : AppCompatActivity() {
+
+    private val adapter = CarRecyclerViewAdapter(object : OnCarClickListener {
+        override fun onClick(carClick: CarClick) {
+            TODO("not implemented")
+        }
+    })
 
     @Inject
     lateinit var androidViewModel: AndroidArchViewModel
@@ -18,7 +27,19 @@ class AndroidArchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityAndroidArchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupRecycler(binding)
         injectDependencies()
+        observe()
+    }
+
+    private fun setupRecycler(binding: ActivityAndroidArchBinding) {
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun observe() {
+        androidViewModel.carsList.observe(this,
+            Observer { uiCarsList -> adapter.setData(uiCarsList) })
     }
 
     private fun injectDependencies() {
