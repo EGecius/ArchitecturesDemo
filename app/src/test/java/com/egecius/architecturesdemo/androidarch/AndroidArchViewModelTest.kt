@@ -22,19 +22,17 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class AndroidArchViewModelTest {
 
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
-
     private lateinit var sut: AndroidArchViewModel
 
     @Mock
     private lateinit var carsRepository: CarsRepo
-
     @Mock
     private lateinit var navigator: Navigator
-
     @Mock
     private lateinit var uiCarsMapper: UiCarsMapper
+
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val carsList = listOf(Car("name_1", "img_2"))
     private val uiCarsList = listOf(UiCar("name_1", "img_2"))
