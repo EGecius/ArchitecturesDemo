@@ -17,6 +17,6 @@ class AndroidArchViewModelFactory(
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST") // taken from Google sample
-        return AndroidArchViewModel(carsRepository, uiCarsMapper, navigator, Dispatchers.IO) as T
+        return AndroidArchViewModel(carsRepository, uiCarsMapper, navigator, Dispatchers.Main) as T
     }
 }

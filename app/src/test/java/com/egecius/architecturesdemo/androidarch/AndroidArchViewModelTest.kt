@@ -66,4 +66,13 @@ class AndroidArchViewModelTest {
     private suspend fun givenCarsWillBeEmitted() {
         given(carsRepository.getCars()).willReturn(carsList)
     }
+
+    @Test
+    fun `shows error message`() {
+        givenCarsEmissionFails()
+    }
+
+    private fun givenCarsEmissionFails() {
+        TODO("not implemented")
+    }
 }

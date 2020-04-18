@@ -19,14 +19,24 @@ class AndroidArchViewModel constructor(
 
     // TODO: 18/04/2020 remove it, once tests for  AndroidArchViewModel are finished
     val liveDataDemo = MutableLiveData(1)
+    val isError = MutableLiveData(false)
 
     val carsList = liveData<List<UiCar>>(dispatcher) {
-        val cars = carsRepository.getCars()
-        uiCarsMapper.toUiCars(cars)
+        try {
+            val cars = carsRepository.getCars()
+            uiCarsMapper.toUiCars(cars)
+            isError.value = false
+        } catch (e: Exception) {
+            isError.value = true
+        }
     }
 
     fun onCarClick(carClick: CarClick) {
         navigator.openDetailScreen(carClick)
+    }
+
+    fun onClickedRetry() {
+        TODO("not implemented")
     }
 
 }
