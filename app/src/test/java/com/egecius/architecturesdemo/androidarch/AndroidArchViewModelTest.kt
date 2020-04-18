@@ -3,13 +3,16 @@
 package com.egecius.architecturesdemo.androidarch
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.viewModelScope
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.d_domain.Car
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
+import com.egecius.architecturesdemo.utils.MainCoroutineRule
 import com.nhaarman.mockitokotlin2.given
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.assertj.core.api.Assertions.assertThat
@@ -36,6 +39,10 @@ class AndroidArchViewModelTest {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
+    /** Sets the main coroutines dispatcher to a TestCoroutineScope for unit testing */
+    @ExperimentalCoroutinesApi
+    @get:Rule
+    var mainCoroutineRule = MainCoroutineRule()
 
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
@@ -78,5 +85,18 @@ class AndroidArchViewModelTest {
         val result: Boolean? = sut.isError.value
 
         assertThat(result).isFalse()
+    }
+
+    @Test
+    fun `viewModelScope job intercepts exception in invokeOnCompletion`() {
+        var resultThrowable: Throwable? = null
+
+        sut.viewModelScope.launch{
+            throw Exception("egis")
+        }.invokeOnCompletion {
+            resultThrowable = it
+        }
+
+        assertThat(resultThrowable?.message).isEqualTo("egis")
     }
 }
