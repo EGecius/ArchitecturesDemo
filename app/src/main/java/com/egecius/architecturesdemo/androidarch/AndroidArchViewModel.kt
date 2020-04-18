@@ -1,6 +1,9 @@
 package com.egecius.architecturesdemo.androidarch
 
-import androidx.lifecycle.*
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
@@ -30,7 +33,7 @@ class AndroidArchViewModel constructor(
             val cars = carsRepository.getCars()
             carsList.value = uiCarsMapper.toUiCars(cars)
         }.invokeOnCompletion {
-            isError.value = true
+            it?.let { isError.value = true }
         }
     }
 
