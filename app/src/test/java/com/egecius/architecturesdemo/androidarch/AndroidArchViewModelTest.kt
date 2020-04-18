@@ -1,3 +1,5 @@
+@file:Suppress("UsePropertyAccessSyntax")
+
 package com.egecius.architecturesdemo.androidarch
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -76,5 +78,12 @@ class AndroidArchViewModelTest {
 
     private fun givenCarsEmissionFails() {
         TODO("not implemented")
+    }
+
+    @Test
+    fun `hides error message when 'retry' clicked`() {
+        val result: Boolean? = sut.isError.value
+
+        assertThat(result).isFalse()
     }
 }
