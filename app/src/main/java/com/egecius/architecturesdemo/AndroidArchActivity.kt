@@ -1,0 +1,23 @@
+package com.egecius.architecturesdemo
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.egecius.architecturesdemo.androidarch.di.AndroidArchActivityModule
+import com.egecius.architecturesdemo.cleanarch.di.CleanArcActivityModule
+import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
+import com.egecius.architecturesdemo.databinding.ActivityAndroidArchBinding
+
+class AndroidArchActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val binding = ActivityAndroidArchBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        injectDependencies()
+    }
+
+    private fun injectDependencies() {
+        (application as MyApplication).appComponent.plus(AndroidArchActivityModule(this))
+            .injectInto(this)
+    }
+}

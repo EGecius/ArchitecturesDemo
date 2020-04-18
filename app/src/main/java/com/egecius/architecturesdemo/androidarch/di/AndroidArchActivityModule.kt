@@ -1,6 +1,7 @@
 package com.egecius.architecturesdemo.androidarch.di
 
 import androidx.lifecycle.ViewModelProvider
+import com.egecius.architecturesdemo.AndroidArchActivity
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
 import dagger.Module
