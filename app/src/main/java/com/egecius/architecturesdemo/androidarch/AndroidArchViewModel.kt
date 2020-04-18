@@ -18,8 +18,6 @@ class AndroidArchViewModel constructor(
     private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    // TODO: 18/04/2020 remove it, once tests for  AndroidArchViewModel are finished
-    val liveDataDemo = MutableLiveData(1)
     val isError = MutableLiveData(false)
     val isFetchingData = MutableLiveData(false)
     var carsList = MutableLiveData<List<UiCar>>()

@@ -48,13 +48,6 @@ class AndroidArchViewModelTest {
         sut = AndroidArchViewModel(carsRepository, uiCarsMapper, navigator, testCoroutineDispatcher)
     }
 
-    @Test
-    fun `demo for testing live data`() {
-        val result = sut.liveDataDemo.value
-
-        assertThat(result).isEqualTo(1)
-    }
-
     // TODO: 18/04/2020 make the test pass
     @Test
     fun `shows cars List`() = testCoroutineDispatcher.runBlockingTest {
