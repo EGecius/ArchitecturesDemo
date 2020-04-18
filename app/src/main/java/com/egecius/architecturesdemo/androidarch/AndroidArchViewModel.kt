@@ -15,13 +15,13 @@ class AndroidArchViewModel(
     private val navigator: Navigator
 ) : ViewModel() {
 
-    fun onCarClick(carClick: CarClick) {
-        navigator.openDetailScreen(carClick)
-    }
-
     val carsList = liveData<List<UiCar>> {
         val cars = carsRepository.getCars()
         uiCarsMapper.toUiCars(cars)
+    }
+
+    fun onCarClick(carClick: CarClick) {
+        navigator.openDetailScreen(carClick)
     }
 
 }
