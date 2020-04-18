@@ -1,6 +1,5 @@
 package com.egecius.architecturesdemo.androidarch
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,6 +21,7 @@ class AndroidArchViewModel constructor(
     // TODO: 18/04/2020 remove it, once tests for  AndroidArchViewModel are finished
     val liveDataDemo = MutableLiveData(1)
     val isError = MutableLiveData(false)
+    val isFetchingData = MutableLiveData(false)
     var carsList = MutableLiveData<List<UiCar>>()
 
     init {
@@ -30,10 +30,12 @@ class AndroidArchViewModel constructor(
 
     private fun fetchCarsList() {
         viewModelScope.launch {
+            isFetchingData.value = true
             val cars = carsRepository.getCars()
             carsList.value = uiCarsMapper.toUiCars(cars)
         }.invokeOnCompletion {
             it?.let { isError.value = true }
+            isFetchingData.value = false
         }
     }
 

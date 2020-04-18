@@ -10,6 +10,8 @@ import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarClick
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.CarRecyclerViewAdapter
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.OnCarClickListener
 import com.egecius.architecturesdemo.cleanarch.shared.MyApplication
+import com.egecius.architecturesdemo.cleanarch.shared.setGone
+import com.egecius.architecturesdemo.cleanarch.shared.setVisible
 import com.egecius.architecturesdemo.databinding.ActivityAndroidArchBinding
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
@@ -47,6 +49,13 @@ class AndroidArchActivity : AppCompatActivity() {
         viewModel.isError.observe(this, Observer { isError ->
             if (isError) {
                 showErrorSnackbar()
+            }
+        })
+        viewModel.isFetchingData.observe(this, Observer { isFetching ->
+            if (isFetching) {
+                binding.progressBar.setVisible()
+            } else {
+                binding.progressBar.setGone()
             }
         })
     }
