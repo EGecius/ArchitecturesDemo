@@ -14,14 +14,14 @@ import javax.inject.Inject
 
 class AndroidArchActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var viewModel: AndroidArchViewModel
+
     private val adapter = CarRecyclerViewAdapter(object : OnCarClickListener {
         override fun onClick(carClick: CarClick) {
             TODO("not implemented")
         }
     })
-
-    @Inject
-    lateinit var androidViewModel: AndroidArchViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class AndroidArchActivity : AppCompatActivity() {
     }
 
     private fun observe() {
-        androidViewModel.carsList.observe(this,
+        viewModel.carsList.observe(this,
             Observer { uiCarsList -> adapter.setData(uiCarsList) })
     }
 
