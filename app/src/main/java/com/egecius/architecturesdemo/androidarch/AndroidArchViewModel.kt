@@ -34,6 +34,7 @@ class AndroidArchViewModel constructor(
             val cars = carsRepository.getCars()
             carsList.value = uiCarsMapper.toUiCars(cars)
         }.invokeOnCompletion {
+            // TODO: 18/04/2020 handle errors correctly - currently the app just crashes
             it?.let { isError.value = true }
             isFetchingData.value = false
         }
