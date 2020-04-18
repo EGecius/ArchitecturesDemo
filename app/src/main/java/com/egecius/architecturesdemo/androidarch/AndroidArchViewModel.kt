@@ -29,7 +29,7 @@ class AndroidArchViewModel constructor(
     }
 
     private fun fetchCarsList() {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             isFetchingData.value = true
             val cars = carsRepository.getCars()
             carsList.value = uiCarsMapper.toUiCars(cars)
