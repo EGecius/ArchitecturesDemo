@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
+import com.egecius.architecturesdemo.shared.emptyHandler
 import kotlinx.coroutines.launch
 
 class AndroidArchViewModel(
@@ -23,7 +24,7 @@ class AndroidArchViewModel(
     }
 
     private fun fetchCars() {
-        viewModelScope.launch {
+        viewModelScope.launch(emptyHandler) {
             isUpdating.value = true
             val cars = carsRepository.getCars()
             carsList.value = uiCarsMapper.toUiCars(cars)
