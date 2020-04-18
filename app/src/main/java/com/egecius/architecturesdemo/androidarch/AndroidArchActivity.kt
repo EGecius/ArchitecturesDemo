@@ -19,7 +19,7 @@ class AndroidArchActivity : AppCompatActivity() {
 
     private val adapter = CarRecyclerViewAdapter(object : OnCarClickListener {
         override fun onClick(carClick: CarClick) {
-            TODO("not implemented")
+            viewModel.onCarClick(carClick)
         }
     })
 
