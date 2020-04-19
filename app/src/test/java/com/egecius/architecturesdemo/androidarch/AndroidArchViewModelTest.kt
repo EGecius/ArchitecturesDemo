@@ -17,6 +17,7 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -69,7 +70,7 @@ class AndroidArchViewModelTest {
         given(carsRepository.getCars()).willReturn(carsList)
     }
 
-    @Test
+    @Test @Ignore
     fun `shows error message`() {
         givenCarsEmissionFails()
 
