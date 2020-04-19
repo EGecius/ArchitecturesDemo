@@ -14,7 +14,6 @@ import com.nhaarman.mockitokotlin2.doThrow
 import com.nhaarman.mockitokotlin2.given
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.runBlockingTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
@@ -47,20 +46,17 @@ class AndroidArchViewModelTest {
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    private val testDispatcher = TestCoroutineDispatcher()
-
     private val carsList = listOf(Car("name_1", "img_2"))
     private val uiCarsList = listOf(UiCar("name_1", "img_2"))
-
 
     @Before
     fun setUp() {
         given(uiCarsMapper.toUiCars(carsList)).willReturn(uiCarsList)
-        sut = AndroidArchViewModel(carsRepository, uiCarsMapper, navigator, testDispatcher)
+        sut = AndroidArchViewModel(carsRepository, uiCarsMapper, navigator)
     }
 
     @Test
-    fun `shows cars List`() = testDispatcher.runBlockingTest {
+    fun `shows cars List`() = runBlockingTest {
         givenCarsWillBeEmitted()
 
         sut.onCreate()
@@ -74,7 +70,7 @@ class AndroidArchViewModelTest {
     }
 
     @Test
-    fun `shows error message`() = testDispatcher.runBlockingTest {
+    fun `shows error message`() = runBlockingTest {
         givenCarsEmissionFails()
 
         sut.onCreate()
@@ -108,7 +104,7 @@ class AndroidArchViewModelTest {
     }
 
     @Test
-    fun `hides progress indicator when fetching finishes`() = testDispatcher.runBlockingTest {
+    fun `hides progress indicator when fetching finishes`() = runBlockingTest {
         givenCarsWillBeEmitted()
 
         sut.onCreate()

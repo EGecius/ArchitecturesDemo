@@ -9,14 +9,12 @@ import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCar
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
 import com.egecius.architecturesdemo.shared.emptyHandler
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
-class AndroidArchViewModel constructor(
+class AndroidArchViewModel(
     private val carsRepository: CarsRepo,
     private val uiCarsMapper: UiCarsMapper,
-    private val navigator: Navigator,
-    private val dispatcher: CoroutineDispatcher
+    private val navigator: Navigator
 ) : ViewModel() {
 
     val isError = MutableLiveData(false)
@@ -28,7 +26,7 @@ class AndroidArchViewModel constructor(
     }
 
     private fun fetchCarsList() {
-        viewModelScope.launch(dispatcher + emptyHandler) {
+        viewModelScope.launch(emptyHandler) {
             isFetching.value = true
             carsList.value = uiCarsMapper.toUiCars(carsRepository.getCars())
         }.invokeOnCompletion {

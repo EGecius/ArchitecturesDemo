@@ -6,8 +6,6 @@ import com.egecius.architecturesdemo.androidarch.AndroidArchViewModel
 import com.egecius.architecturesdemo.cleanarch.a_frameworks.android.Navigator
 import com.egecius.architecturesdemo.cleanarch.b_adapters.ui.UiCarsMapper
 import com.egecius.architecturesdemo.cleanarch.d_domain.CarsRepo
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 
 class AndroidArchViewModelFactory(
     private val carsRepository: CarsRepo,
@@ -17,6 +15,6 @@ class AndroidArchViewModelFactory(
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST") // taken from Google sample
-        return AndroidArchViewModel(carsRepository, uiCarsMapper, navigator, Dispatchers.Main) as T
+        return AndroidArchViewModel(carsRepository, uiCarsMapper, navigator) as T
     }
 }
