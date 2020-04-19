@@ -22,7 +22,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-
 import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
@@ -106,5 +105,15 @@ class AndroidArchViewModelTest {
         }
 
         assertThat(resultThrowable?.message).isEqualTo("egis")
+    }
+
+    @Test
+    fun `hides progress indicator when fetching finishes`() = testDispatcher.runBlockingTest {
+        givenCarsWillBeEmitted()
+
+        sut.onCreate()
+
+        val result: Boolean? = sut.isFetching.value
+        assertThat(result).isFalse()
     }
 }
