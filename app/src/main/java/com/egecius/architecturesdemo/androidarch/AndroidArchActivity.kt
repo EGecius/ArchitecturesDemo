@@ -36,6 +36,7 @@ class AndroidArchActivity : AppCompatActivity() {
         setupRecycler()
         injectDependencies()
         updateViewOnViewModelChanges()
+        viewModel.onCreate()
     }
 
     private fun setupRecycler() {

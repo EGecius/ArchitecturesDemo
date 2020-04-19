@@ -23,7 +23,7 @@ class AndroidArchViewModel constructor(
     val isFetching = MutableLiveData(false)
     var carsList = MutableLiveData<List<UiCar>>()
 
-    init {
+    fun onCreate() {
         fetchCarsList()
     }
 

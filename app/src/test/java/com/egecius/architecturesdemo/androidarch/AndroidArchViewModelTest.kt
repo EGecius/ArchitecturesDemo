@@ -53,16 +53,17 @@ class AndroidArchViewModelTest {
 
     @Before
     fun setUp() {
+        given(uiCarsMapper.toUiCars(carsList)).willReturn(uiCarsList)
         sut = AndroidArchViewModel(carsRepository, uiCarsMapper, navigator, testCoroutineDispatcher)
     }
 
-    // TODO: 18/04/2020 make the test pass
     @Test
     fun `shows cars List`() = testCoroutineDispatcher.runBlockingTest {
         givenCarsWillBeEmitted()
 
-        val result = sut.carsList.value
+        sut.onCreate()
 
+        val result = sut.carsList.value
         assertThat(result).isEqualTo(uiCarsList)
     }
 
